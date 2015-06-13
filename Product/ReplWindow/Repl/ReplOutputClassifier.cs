@@ -51,7 +51,9 @@ namespace Microsoft.VisualStudio.Repl {
             List<ClassificationSpan> classifications = new List<ClassificationSpan>();
 
             int startIndex = coloredSpans.BinarySearch(new ColoredSpan(span, ConsoleColor.White), SpanStartComparer.Instance);
-            if (startIndex < 0) {
+            if (startIndex == -1) {
+                startIndex = 0;
+            } else if (startIndex < 0) {
                 startIndex = ~startIndex - 1;
             }
 
